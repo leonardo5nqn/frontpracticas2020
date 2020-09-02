@@ -1,0 +1,24 @@
+$text-color: #FEBD11;
+$background-hover: #FEBD11;
+$second-text-color: rgb(4, 4, 194);
+.navbarContainer{
+    margin: auto 10px auto auto;
+    ul{
+        display: flex;
+        list-style: none;
+        li{
+            color: $text-color;
+            margin: auto 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            &.active{
+
+            }
+            &:hover{
+                background-color: $background-hover;
+                color: $second-text-color;
+            }
+        }
+
+    }
+}

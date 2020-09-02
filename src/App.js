@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import Header from './components/header/index';
+import Login from './components/login/index'
+import BodyContainer from './components/body/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App (){
+    //onst [userLogin, setUserLogin] = useState(false);
+    return(
+        <Router>
+            <div>
+                <Header />
+                <Route exact path="/" component={Login} />
+                <Route path="/login" component={Login} />
+            </div>
+        </Router>
+    )
 }
 
-export default App;
+export default App

@@ -1,0 +1,23 @@
+.navbarContainer {
+  margin: auto 10px auto auto;
+}
+
+.navbarContainer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.navbarContainer ul li {
+  color: #FEBD11;
+  margin: auto 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.navbarContainer ul li:hover {
+  background-color: #FEBD11;
+  color: #0404c2;
+}
+/*# sourceMappingURL=index.css.map */
