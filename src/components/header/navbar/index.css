@@ -12,11 +12,15 @@
 .navbarContainer ul li {
   color: #FEBD11;
   margin: auto 15px;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
-.navbarContainer ul li:hover {
+.navbarContainer ul li a {
+  text-decoration: none;
+  color: #FEBD11;
+  padding: 10px 20px;
+}
+
+.navbarContainer ul li a:hover {
   background-color: #FEBD11;
   color: #0404c2;
 }

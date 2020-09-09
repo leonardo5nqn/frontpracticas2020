@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import './index.css';
 import axios from 'axios'
+import Navbar from "../header/index"
+
 function LoginContainer(props)
 {
   const username = useFormInput('')
@@ -15,6 +17,8 @@ function LoginContainer(props)
     setError(null);
     axios({url:'http://localhost:5050/Controller/loginController.php', data: bodyFormData, method: 'post'})
     .then(response => {
+      if(response.data.status===true)
+      props.history.push('/Homeuser')
       console.log(response);
     })
     .catch(error => {
@@ -23,23 +27,26 @@ function LoginContainer(props)
   }
 
   return (
-    <div className='loginContainer'>
-        <form className='loginForm' >
-          <div className='input-group mb-3'>
-            <div className='input-group-prepend'>
-              <i className='material-icons input-group-text'>person</i>
+    <div>
+      <Navbar />
+      <div className='loginContainer'>
+          <form className='loginForm' >
+            <div className='input-group mb-3'>
+              <div className='input-group-prepend'>
+                <i className='material-icons input-group-text'>person</i>
+              </div>
+              <input {...username} className='form-control' type='text' placeholder='Usuario' />
             </div>
-            <input {...username} className='form-control' type='text' placeholder='Usuario' />
-          </div>
-          <div className='input-group mb-3'>
-            <div className='input-group-prepend'>
-              <i className='material-icons input-group-text'>lock</i>
+            <div className='input-group mb-3'>
+              <div className='input-group-prepend'>
+                <i className='material-icons input-group-text'>lock</i>
+              </div>
+              <input {...password} className='form-control' type='password' placeholder='Contraseña' />
             </div>
-            <input {...password} className='form-control' type='password' placeholder='Contraseña' />
-          </div>
-          <input className='login btn' type='button' onClick={handleLogin} value='Ingresar'/>
-        </form>
-        <button className='register btn'>Registrarse</button>
+            <input className='login btn' type='button' onClick={handleLogin} value='Ingresar'/>
+          </form>
+          <button className='register btn'>Registrarse</button>
+      </div>
     </div>
   )
 }

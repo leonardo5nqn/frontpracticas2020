@@ -1,17 +1,17 @@
 import React from "react"
 import './index.css';
-class navbarContainer extends React.Component {
-  render() {
-    return (
-      <div className='navbarContainer'>
-          <ul>
-              <li>Ingreso</li>
-              <li>Sobre Nosotros</li>
-              <li>Contacto</li>
-          </ul>
-      </div>
-    )
-  }
+
+function Navbar () {
+  return (
+    <div className='navbarContainer'>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/login">Ingreso</a></li>
+          <li><a href="/about">Sobre Nosotros</a></li>
+          <li><a href="/contact">Contacto</a></li>
+        </ul>
+    </div>
+  )
 }
 
-export default navbarContainer
+export default Navbar
