@@ -15,10 +15,23 @@ function LoginContainer(props)
     bodyFormData.append('user', username.value);
     bodyFormData.append('password', password.value);
     setError(null);
-    axios({url:'http://localhost:5050/Controller/loginController.php', data: bodyFormData, method: 'post'})
+    axios(
+      {url:'http://localhost:5050/Controller/loginController.php', 
+      data: bodyFormData, 
+      crossDomain: true,
+      method: 'post'}
+      )
     .then(response => {
-      if(response.data.status===true)
-      props.history.push('/Homeuser')
+      if(response.data.status===true){
+        const usuario = {
+          usuario: response.data.data['username'],
+          logeado: true,
+          admin: (response.data.data['rol']==='admin' ? true : false)
+        }
+        window.localStorage.setItem('usuario', JSON.stringify(usuario));
+        props.history.push('/homeuser')
+      }
+      
       console.log(response);
     })
     .catch(error => {
