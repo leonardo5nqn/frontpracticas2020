@@ -6,8 +6,8 @@ const Pedidos = (props) => {
 
 
     // valores ocultos para el formulario de pedido: usuario
-    window.localStorage.getItem('usuario')
-    const username = useFormInput('')
+    
+    const username = window.localStorage.getItem('usuario')
     const descripcionPedido = useFormInput('')
     var bodyFormData = new FormData()
 
@@ -27,8 +27,8 @@ const Pedidos = (props) => {
         )
         .then(response => {
             if(response.data.status===true){
-                window.localStorage.setItem('usuario', 'Obaseki Nosa');
-                props.history.push('/homeuser')
+                
+                //props.history.push('/homeuser')
             }
             console.log(response);
         })

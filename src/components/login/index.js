@@ -14,6 +14,7 @@ function LoginContainer(props)
     console.log(username, password);
     bodyFormData.append('user', username.value);
     bodyFormData.append('password', password.value);
+    bodyFormData.append('option', '1')
     setError(null);
     axios(
       {url:'http://localhost:5050/Controller/loginController.php', 
@@ -23,16 +24,15 @@ function LoginContainer(props)
       )
     .then(response => {
       if(response.data.status===true){
+        console.log(response.data);
         const usuario = {
-          usuario: response.data.data['username'],
-          logeado: true,
-          admin: (response.data.data['rol']==='admin' ? true : false)
+          usuario: response.data.data[0]['nombreDeUsuario'],
+          rol: response.data.data[0]['rol'],
+          id: response.data.data[0]['id']
         }
-        window.localStorage.setItem('usuario', JSON.stringify(usuario));
-        props.history.push('/homeuser')
+        window.localStorage.setItem('usuario', JSON.stringify(usuario))
+        props.history.push('/')
       }
-      
-      console.log(response);
     })
     .catch(error => {
       console.log(error)

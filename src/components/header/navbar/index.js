@@ -1,24 +1,33 @@
 import React from "react"
 import './index.css';
 
-function Navbar () {
-  if(window.localStorage)
-  {
-    if(window.localStorage.getItem('logeado')===true)
-    {
-      if(window.localStorage.getItem('admin')===true)
-      {
-
-      }
-
-    }
-  }
-  else{
-    
-  }
-
+function Navbar (props) {
   
-  return (
+  if(props.rol)
+  {
+    if(props.rol=="admin")
+    {
+      return (
+        <div className='navbarContainer'>
+          <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/pedidos">Pedidos</a></li>
+            <li><a href="">Logout</a></li>
+          </ul>
+        </div>
+      )
+    }
+    else return(
+      <div className='navbarContainer'>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/pedidos">Pedidos</a></li>
+          <li><a href="">Logout</a></li>
+        </ul>
+      </div>
+    )
+  }
+  else return (
     <div className='navbarContainer'>
         <ul>
           <li><a href="/">Inicio</a></li>
