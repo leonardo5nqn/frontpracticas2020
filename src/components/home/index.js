@@ -1,55 +1,33 @@
-// utils
-import React from 'react'
-import {Link} from 'react-router-dom'
-// components
+import React,{useState} from 'react'
 import Header from '../header/index'
-import NuevoPedido from '../pedidos/index'
 import ListadoPedidos from '../pedidos/listado/index'
 
 
 function Home ()
 {
-    console.log(window.localStorage.usuario)
-    var user =  (window.localStorage.length > 0 ? window.localStorage.getItem('usuario') : '')
-    console.log(user);
-    user = JSON.parse(user);
-    console.log(user);
+    var user =  (window.localStorage.length > 0 ? JSON.parse(window.localStorage.getItem('usuario')) : '')
+    const [logged,setLogged] = useState(false)
+    const [rol,setRol] = useState('')
     if(user)
     {
         switch(user.rol)
         {
             case "0":
-                return (
-                    <div>
-                        <Header logged="true" rol="admin" />
-                        <ListadoPedidos />
-                    </div>
-                )
+                setLogged(true)
+                setRol("admin")
             break;
             case "1":
-                return (
-                    <div>
-                        <Header logged="true" rol="publico" />
-                        <ListadoPedidos />
-                    </div>
-                )
-            break;
-            default:
-                return (
-                    <div>
-                        <Header/>
-                    </div>
-                )
+                setLogged(true)
+                setRol("publico")
             break;
         }
     }
-    else return (
+    return(
         <div>
-            <Header/>
+            <Header logged={logged} rol={rol} />
         </div>
-    )
-    
-    
+        
+    );
 }
 
 export default Home

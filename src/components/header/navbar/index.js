@@ -5,7 +5,7 @@ function Navbar (props) {
   
   if(props.rol)
   {
-    if(props.rol=="admin")
+    if(props.rol==="admin")
     {
       return (
         <div className='navbarContainer'>

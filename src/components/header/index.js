@@ -5,9 +5,9 @@ import Navbar from './navbar/index'
 
 function Header(props) {
 
-  if(props.logged=="true")
+  if(props.logged===true)
   {
-    if(props.rol == "admin")
+    if(props.rol === "admin")
     {
       return (
       <nav className="navbar nav d-flex navegacion">
