@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import './index.css';
 import axios from 'axios'
 import Navbar from "../header/index"
-import '../../global/strings'
 
 function LoginContainer(props)
 {
@@ -18,7 +17,8 @@ function LoginContainer(props)
     bodyFormData.append('option', '1')
     setError(null);
     axios(
-      {url:_url+'Controller/loginController.php', 
+      {
+      url:`http://localhost:5050/Controller/loginController.php`, 
       data: bodyFormData, 
       crossDomain: true,
       method: 'post'}
