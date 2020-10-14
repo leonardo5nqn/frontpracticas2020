@@ -11,13 +11,14 @@ function Register(){
     const mail = useFormInput('')
     const [error, setError] = useState(null)
     var bodyFormData = new FormData();
+    import {_url} from '../../global/strings'
 
     const handleRegister = (props) => {
         console.log(username, password);
         bodyFormData.append('user', username.value);
         bodyFormData.append('password', password.value);
         setError(null);
-        axios({url:'http://localhost:5050/Controller/loginController.php', data: bodyFormData, method: 'post'})
+        axios({url:`${_url}Controller/loginController.php`, data: bodyFormData, method: 'post'})
         .then(response => {
             if(response.data.status===true)
             props.history.push('/Homeuser')

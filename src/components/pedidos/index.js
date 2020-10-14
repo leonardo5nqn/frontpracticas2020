@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-
+import {_url} from '../../global/strings'
 
 const Pedidos = (props) => {
 
@@ -20,7 +20,7 @@ const Pedidos = (props) => {
         console.log(bodyFormData);
 
         axios({
-            url:'http://localhost:5050/Controller/pedidoController.php', 
+            url:`${_url}Controller/pedidoController.php`, 
             data: bodyFormData, 
             crossDomain: true,
             method: 'post'}
