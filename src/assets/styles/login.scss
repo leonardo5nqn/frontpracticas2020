@@ -1,0 +1,54 @@
+$primary-color : #0058DB;
+$secondary-color: #FEBD11;
+
+.loginContainer{
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    .loginForm
+    {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        .input-group{
+            border-radius: 7px;
+            border: 2px solid $primary-color;
+            .input-group-prepend{
+                
+                .material-icons{
+                    background-color: $primary-color !important;
+                    border:none;
+                    color: $secondary-color;
+                    font-size: 18px;
+                    font-weight: bolder;
+                }
+            }
+            input{
+                border-left: 2px solid $primary-color;
+                outline-color: none;
+                border: none;
+                padding: 3px 10px;
+            }
+        }
+        
+        .login{
+            background-color: #0058DB;
+            color: #FEBD11;
+            font-size: large;
+            margin: 10px auto;
+            padding: 10px 20px;
+            width: 30%;
+        }
+    }
+    .register{
+        background-color: #FEBD11;
+        color: #0058DB;
+        font-size: small;
+        margin: 0 auto;
+        width: 30%;
+    }
+    @media only screen and (min-width: 800px)
+    {
+        max-width: 25%;
+    }
+}

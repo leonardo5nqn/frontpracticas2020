@@ -1,24 +1,32 @@
-import React, {useState} from 'react'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Home from './components/home/index'
-import Login from './components/login/index'
-import Page404 from './components/404/index'
-import HomeUser from './components/home/index'
-import NuevoPedido from './components/pedidos/index'
+import React, {useContext} from 'react'
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import HomePage from './pages/home'
+import LoginPage from './pages/login'
+import DashboardPage from './pages/dashboard'
+import PedidosPage from './pages/pedidos'
+import LogoutPage from './pages/logout'
 
-function App (){
-    //onst [userLogin, setUserLogin] = useState(false);
-    return(
-        <Router>
-            <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/homeuser" component={HomeUser}/>
-                <Route exact path="/nuevoPedido" component={NuevoPedido}/>
-                <Route path='*' component={Page404}/>
-            </Switch>
-        </Router>
-    )
+import Navbar from './components/navbar'
+
+import {UserContext} from './global/context'
+
+import './assets/styles/global.css'
+
+export default function App() {
+  const {logged,rol} = useContext(UserContext)
+  return (
+      <Router>
+        <Navbar />
+        <Switch>
+            <Route exact path='/' component={HomePage}/>
+            <Route exact path="/login" component={LoginPage}/>
+            { logged===true && <Route exact path="/dashboard" component={DashboardPage} />}
+            { logged===true && <Route exact path="/pedidos" component={PedidosPage} />}
+            { logged===true && (rol==="comision" || rol==="admin") && <Route exact path="/logout" component={LogoutPage} />}
+            { logged===true && <Route exact path="/logout" component={LogoutPage} />}
+            <Route path='*' component={HomePage}/>
+            
+        </Switch>
+      </Router>
+  );
 }
-
-export default App

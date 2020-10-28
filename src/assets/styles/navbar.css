@@ -1,0 +1,49 @@
+.navegacion {
+  background-color: #0058DB;
+}
+
+.navegacion .headerLogo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  padding: 10px;
+}
+
+.navegacion .headerLogo .logoRot {
+  max-height: 40px;
+  margin: auto 10px;
+}
+
+.navegacion .headerLogo .logoName {
+  margin: auto 10px;
+  font-size: large;
+  font-weight: bold;
+  color: #FEBD11;
+}
+
+.navbarContainer {
+  margin: auto 10px auto auto;
+  list-style: none;
+}
+
+.navbarContainer li {
+  color: #FEBD11;
+  margin: auto 10px;
+}
+
+.navbarContainer li a {
+  text-decoration: none;
+  font-size: small;
+  color: #FEBD11;
+  padding: 10px;
+}
+
+.navbarContainer li a:hover {
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  background-color: #FEBD11;
+  color: #0404c2;
+}
+/*# sourceMappingURL=navbar.css.map */

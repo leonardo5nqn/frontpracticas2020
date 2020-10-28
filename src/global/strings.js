@@ -1,1 +1,1 @@
-export var _url = "http://localhost:5050/";
+export var _hostUrl = "http://localhost:5050/"

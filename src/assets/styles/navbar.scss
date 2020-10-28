@@ -1,0 +1,48 @@
+$background-color: #0058DB;
+$text-color: #FEBD11;
+$background-hover: #FEBD11;
+$second-text-color: rgb(4, 4, 194);
+.navegacion
+{
+    background-color: $background-color;
+    .headerLogo
+    {
+        display: flex;
+        column-gap:10px;
+        padding: 10px;
+        
+        .logoRot
+        {
+            //max-width: 50px;
+            max-height: 40px;
+            margin: auto 10px;
+        }
+        .logoName
+        {
+            margin: auto 10px;
+            font-size: large;
+            font-weight: bold;
+            color: $text-color;
+        }
+    }
+}
+.navbarContainer{
+    margin: auto 10px auto auto;
+    list-style: none;
+    li{
+        color: $text-color;
+        margin: auto 10px;
+        a{
+            text-decoration: none;
+            font-size: small;
+            color: $text-color;
+            padding: 10px;
+            &:hover{
+                transition: 0.4s ease-in-out;
+                background-color: $background-hover;
+                color: $second-text-color;
+            }
+        }            
+    }
+}
+
