@@ -9,20 +9,22 @@ export default function PedidosPage()
     bodyFormData.append('option','2')
     const [data, setData] = useState([])
 
-    const getPedidos = ()=>
+    const getPedidos = async ()=>
     {
         axios({
             url:`${_hostUrl}Controller/pedidoController.php`, 
             data: bodyFormData, 
             crossDomain: true,
-            method: 'post'}
+            method: 'post'
+            }
         )
         .then(response => {
             if(response.data.status===true){
+                var array = [];
                 response.data.data.forEach(element => {
-                    data.push(JSON.parse(element))
-                    setData(data)
+                    array.push(JSON.stringify(element))
                 });
+                setData(array)
             }
             else return response.data.message
         })
