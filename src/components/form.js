@@ -15,8 +15,6 @@ export default function Form(props)
 
     const switcher = (a) => {(a===1 ? form=true : form=false);console.log(form)}
 
-    console.log(UserContext)
-
     const username = useFormInput('')
     const password = useFormInput('')
     const [error, setError] = useState(null)
@@ -38,9 +36,7 @@ export default function Form(props)
         )
         .then(response => {
             if(response.data.status===true){
-                console.log(response.data.data)
                 setLogged(true)
-                console.log(response.data.data[0])
                 setRol(response.data.data[0].rol)
                 setId(response.data.data[0].id)
                 props.history.push("/")

@@ -9,7 +9,7 @@ export default function PedidosPage()
     bodyFormData.append('option','2')
     const [data, setData] = useState([])
 
-    const getPedidos = async ()=>
+    const getPedidos = ()=>
     {
         axios({
             url:`${_hostUrl}Controller/pedidoController.php`, 
@@ -32,28 +32,50 @@ export default function PedidosPage()
             console.log(error)
         })
     }
-    const Pedidos = () => 
-    {
-        getPedidos()
-        return(
-            (data.length>0 ? data.map(pedido => (
-                <li>{pedido}</li>
-            ))
-            :
-            "cargando pedidos"
-            )
-            
-        )
-    }
+    if(!data.length>0) getPedidos()
         
     return(
-        <div>
-            Pedidos
-            <table>
-                <Suspense fallback={<tr>"No hay pedidos cargados"</tr>}>
-                    <Pedidos />
-                </Suspense>
+        <div className="d-flex flex-column px-5 py-2">
+            <h2 className="display-6 ">Listado de Pedidos</h2>
+            <table className="table table-sm table-striped table-responsive-md">
+                <thead className="bg-primary">
+                    <tr>
+                        <th className="text-warning" scope="col">Descripción</th>
+                        <th className="text-warning" scope="col">Estado</th>
+                        <th className="text-warning" scope="col">Validación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <Suspense fallback={<tr><td>No hay pedidos cargados</td></tr>}>
+                        {
+                            (data.length>0 ? data.map (pedido => {
+                                
+                                let pedi = JSON.parse(pedido)
+                                return (<tr>
+                                        <td>{pedi.descripcion}</td>
+                                        <td>{pedi.estado}</td>
+                                        <td>{pedi.validacion}</td>
+                                        <td>
+                                            <i className="material-icons text-info text-center btn">visibility</i>
+                                            <i className="material-icons text-danger text-center btn">delete</i>
+                                        </td>
+                                    </tr>)
+                            })
+                            :
+                            <tr><td>Cargando Pedidos...</td></tr>)
+                        }
+                    </Suspense>
+                </tbody>
             </table>
         </div>
     )
 }
+/*
+        let Listado = (datas.length>0 ? data.map(pedido => 
+            {
+                let pedi = JSON.parse(pedido)
+                    console.log(pedi)
+                return(<div></div>)
+            })
+            : "cargando pedidos"
+            )*/
