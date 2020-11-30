@@ -46,7 +46,6 @@
   font-size: large;
   margin: 10px auto;
   padding: 10px 20px;
-  width: 30%;
 }
 
 .loginContainer .register {
@@ -54,12 +53,17 @@
   color: #0058DB;
   font-size: small;
   margin: 0 auto;
-  width: 30%;
 }
 
 @media only screen and (min-width: 800px) {
   .loginContainer {
     max-width: 25%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .loginContainer {
+    max-width: 70%;
   }
 }
 /*# sourceMappingURL=login.css.map */

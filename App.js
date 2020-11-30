@@ -5,15 +5,13 @@ import LoginPage from './pages/login'
 import DashboardPage from './pages/dashboard'
 import PedidosPage from './pages/pedidos'
 import LogoutPage from './pages/logout'
+import HistoricoPedido from './pages/historicoPedido'
 
-import Document from './components/document'
 import Navbar from './components/navbar'
-import PedidoForm from './components/pedidoForm'
 
 import {UserContext} from './global/context'
 
 import './assets/styles/global.css'
-
 
 export default function App() {
   const {logged,rol} = useContext(UserContext)
@@ -25,8 +23,7 @@ export default function App() {
             <Route exact path="/login" component={LoginPage}/>
             { logged===true && <Route exact path="/dashboard" component={DashboardPage} />}
             { logged===true && <Route exact path="/pedidos" component={PedidosPage} />}
-            { logged===true && (rol==="comision" || rol==="admin") && <Route exact path="/document/:docId" component={Document} />}
-            { logged===true && <Route exact path="/document/new" component={PedidoForm}/>}
+            { logged===true && (rol==="private" || rol==="admin") && <Route exact path="/historicoPedido" component={HistoricoPedido} />}
             { logged===true && <Route exact path="/logout" component={LogoutPage} />}
             <Route path='*' component={HomePage}/>
             

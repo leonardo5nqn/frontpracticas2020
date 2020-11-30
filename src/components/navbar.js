@@ -7,7 +7,6 @@ import {UserContext} from '../global/context'
 export default function Navbar(props)
 {
     const {logged, rol} = useContext(UserContext)
-    console.log(logged)
     let nav=[]; 
     if(logged===true)
     {

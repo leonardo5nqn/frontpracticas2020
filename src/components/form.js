@@ -1,8 +1,8 @@
 import React, { useState,useContext } from 'react'
 import axios from 'axios'
 import {UserContext} from '../global/context'
-import { Redirect } from 'react-router'
 import {_hostUrl} from '../global/strings'
+import { Redirect } from 'react-router'
 import '../assets/styles/login.css'
 
 export default function Form(props)
@@ -13,7 +13,7 @@ export default function Form(props)
         return {value,onChange: handleChange}
     }
 
-    const switcher = (a) => {(a===1 ? form=true : form=false);console.log(form)}
+    const switcher = (a) => {(a===1 ? form=true : form=false)}
 
     const username = useFormInput('')
     const password = useFormInput('')
@@ -21,7 +21,10 @@ export default function Form(props)
     const {logged, setLogged, setRol, setId} = useContext(UserContext)
     let form = false;
     var bodyFormData = new FormData();
-    if(logged === true) return(<Redirect to="/dashboard" />)
+    if(logged === true || localStorage.getItem("loggedIn")==="true") {
+        setLogged(true)
+        return(<Redirect to="/dashboard" />)
+    }
     const handleLogin = () => {
         bodyFormData.append('user', username.value);
         bodyFormData.append('password', password.value);
@@ -35,11 +38,16 @@ export default function Form(props)
             method: 'post'}
         )
         .then(response => {
+            console.log(response.data);
             if(response.data.status===true){
+                localStorage.setItem("username",`${response.data.data[0].nombreDeUsuario}`)
+                localStorage.setItem("userId",`${response.data.data[0].id}`)
+                localStorage.setItem("userRol",`${response.data.data[0].rol}`)
+                localStorage.setItem("loggedIn","true")
                 setLogged(true)
                 setRol(response.data.data[0].rol)
                 setId(response.data.data[0].id)
-                props.history.push("/")
+                props.history.push("/dashboard")
             }else{
                 setError(response.data.message)
             }
